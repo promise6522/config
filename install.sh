@@ -14,3 +14,6 @@ cp vim/* "$VIM_CFG_DIR/" -rf
 
 # gdbinit
 cp gdbinit ~/.gdbinit
+
+# screen
+cp screenrc ~/.screenrc
