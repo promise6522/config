@@ -109,3 +109,8 @@ inoremap <A-k> <C-o>k
 inoremap <A-l> <C-o>l
 " quick input closing bracket
 inoremap {<CR> {<CR>}<ESC>O
+
+filetype plugin on
+filetype indent on
+" gofmt .go source files when they are saved
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
