@@ -17,3 +17,6 @@ cp gdbinit ~/.gdbinit
 
 # screen
 cp screenrc ~/.screenrc
+
+# ctags : add support for indexing .go files
+cp ctags ~/.ctags
