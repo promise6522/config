@@ -85,11 +85,11 @@ map ft <esc>:FufTag<cr>
 "map <silent> <c-\> :FufTag! <c-r>=expand('<cword>')<cr><cr>
 
 " hight lines longer than 80 characters
-if exists('+colorcolumn')
-  set colorcolumn=80
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
+"if exists('+colorcolumn')
+"  set colorcolumn=80
+"else
+"  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+"endif
 
 " show current function name
 fun! ShowFuncName()
