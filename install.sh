@@ -19,4 +19,7 @@ cp gdbinit ~/.gdbinit
 cp screenrc ~/.screenrc
 
 # ctags : add support for indexing .go files
-cp ctags ~/.ctags
+#cp ctags ~/.ctags
+
+# tmux
+cp tmux.conf ~/.tmux.conf
