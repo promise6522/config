@@ -36,23 +36,24 @@ autocmd VimEnter * call AutoNERDTree()
 nnoremap <C-l> :TlistToggle<cr>
 vnoremap <C-l> :TlistToggle<cr>
 
+" NOTE(xlj): Now we use autotag.vim, don't need this anymore
 " auto update tags
-function! UpdateTags()
-    " only update the tags when we've created one
-    if !filereadable("tags")
-        return
-    endif
-
-    " use the path relative to pwd
-    let _file = expand("%")
-    let _cmd = 'ctags --append "' . _file . '"'
-    let _ret = system(_cmd)
-    unlet _cmd
-    unlet _file
-    unlet _ret
-endfunction
-
-autocmd BufWritePost *.cpp,*.h,*.c call UpdateTags()
+"function! UpdateTags()
+"    " only update the tags when we've created one
+"    if !filereadable("tags")
+"        return
+"    endif
+"
+"    " use the path relative to pwd
+"    let _file = expand("%")
+"    let _cmd = 'ctags --append=yes "' . _file . '"'
+"    let _ret = system(_cmd)
+"    unlet _cmd
+"    unlet _file
+"    unlet _ret
+"endfunction
+"
+"autocmd BufWritePost *.cpp,*.h,*.c call UpdateTags()
 
 " easy copy to/paste from system clipboard
 nnoremap <C-y> "+y
@@ -114,3 +115,8 @@ filetype plugin on
 filetype indent on
 " gofmt .go source files when they are saved
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+" for Grep.vim
+nnoremap <silent> gr :Grep<CR><CR>
+" Open in new tab for quickfix
+:set switchbuf+=usetab,newtab
