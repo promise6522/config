@@ -83,6 +83,7 @@ autocmd BufWinLeave * call clearmatches()
 " shotcuts for fuzzyfinder
 map ff <esc>:FufFile **/<cr>
 map ft <esc>:FufTag<cr>
+map fr <esc>:FufRenewCache<cr>
 "map <silent> <c-\> :FufTag! <c-r>=expand('<cword>')<cr><cr>
 
 " hight lines longer than 80 characters
@@ -108,8 +109,6 @@ inoremap <A-h> <C-o>h
 inoremap <A-j> <C-o>j
 inoremap <A-k> <C-o>k
 inoremap <A-l> <C-o>l
-" quick input closing bracket
-inoremap {<CR> {<CR>}<ESC>O
 
 filetype plugin on
 filetype indent on

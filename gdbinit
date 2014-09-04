@@ -694,4 +694,4 @@ set demangle-style gnu-v3
 set print sevenbit-strings off
 
 # for golang's gdb support
-add-auto-load-safe-path /usr/share/go/src/pkg/runtime/runtime-gdb.py
+add-auto-load-safe-path /usr/local/go/src/pkg/runtime/runtime-gdb.py
