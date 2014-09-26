@@ -119,3 +119,8 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 nnoremap <silent> gr :Grep<CR><CR>
 " Open in new tab for quickfix
 :set switchbuf+=usetab,newtab
+
+" Save current file
+nmap <c-s> :w<CR>
+vmap <c-s> <Esc><c-s>gv
+imap <c-s> <Esc><c-s>
