@@ -105,3 +105,6 @@ fi
 # Added by xlj
 # Inogre ctags and cscope database files when using grep
 export GREP_OPTIONS="--binary-files=without-match --exclude=tags --exclude=cscope*"
+
+# not to be disturbed by ctrl-s ctrl-q in terminals:
+stty -ixon
