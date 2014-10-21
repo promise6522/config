@@ -124,3 +124,6 @@ nnoremap <silent> gr :Grep<CR><CR>
 nmap <c-s> :w<CR>
 vmap <c-s> <Esc><c-s>gv
 imap <c-s> <Esc><c-s>
+
+" Force saving files that require root permission
+cmap w!! w !sudo tee > /dev/null %
