@@ -112,7 +112,13 @@ inoremap <A-l> <C-o>l
 
 filetype plugin on
 filetype indent on
-" gofmt .go source files when they are saved
+
+" gofmt golang source files on saving
+if executable("goreturns")
+    let g:gofmt_command = "goreturns"
+elseif executable("goimports")
+    let g:gofmt_command = "goimports"
+end
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " for Grep.vim
