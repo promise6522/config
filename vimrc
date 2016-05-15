@@ -1,3 +1,12 @@
+call plug#begin('~/.vim/plugged')
+Plug 'fatih/vim-go'
+Plug 'scrooloose/nerdtree'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'exu/pgsql.vim'
+call plug#end()
+
 " auto indent
 "set ai
 "set smartindent
@@ -16,18 +25,27 @@ set hlsearch
 syntax on
 " align function arguments
 set cino+=(0
+" display status line always
+set laststatus=2
+
+" ============
+" For NERDTree
+" ============
+" nerdtree arrow symbols
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '>'
+let g:NERDTreeDirArrowCollapsible = '<'
 
 " filter the unwanted files
 let NERDTreeIgnore=['\.o$', '\.lo$', '\.la$', 'tags', 'cscope.*']
 
-" auto launch NERDTree
-function! AutoNERDTree()
-    if 0 == argc()
-        NERDTree
-    end
-endfunction
+" auto launch NERDTree when no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-n> :NERDTreeToggle<CR>
 
-autocmd VimEnter * call AutoNERDTree()
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " ident 2 spaces when doing ruby
 "autocmd FileType rb setlocal shiftwidth=2 tabstop=2
@@ -113,13 +131,28 @@ inoremap <A-l> <C-o>l
 filetype plugin on
 filetype indent on
 
-" gofmt golang source files on saving
-if executable("goreturns")
-    let g:gofmt_command = "goreturns"
-elseif executable("goimports")
-    let g:gofmt_command = "goimports"
+" vim-go configurations
+"
+" more syntax highlight rules
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+" more key mappings
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+" use goimports instead of gofmt
+if executable("goimports")
+    let g:go_fmt_command = "goimports"
 end
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
+" :GoInstallBinaries install path
+let g:go_bin_path = expand("~/.gotools")
+
 
 " for Grep.vim
 nnoremap <silent> gr :Grep<CR><CR>
